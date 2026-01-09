@@ -1,0 +1,1 @@
+{"version":3,"file":"store-validator.d.ts","sourceRoot":"","sources":["../../src/lib/store-validator.ts"],"names":[],"mappings":"AAAA,MAAM,WAAW,SAAS;IACxB,MAAM,EAAE,OAAO,CAAC;IAChB,WAAW,EAAE,MAAM,CAAC;IACpB,YAAY,EAAE,MAAM,CAAC;CACtB;AAED,wBAAsB,uBAAuB,CAC3C,MAAM,EAAE,MAAM,GACb,OAAO,CAAC,SAAS,CAAC,CAoDpB"}

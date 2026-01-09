@@ -1,0 +1,18 @@
+#!/usr/bin/env node
+
+import {execute} from '@oclif/core';
+
+// Use development mode only if tsx is available, otherwise use built files
+const useDev = process.env.NODE_ENV === 'development';
+
+// Check if the first argument is a known command, if not, treat it as search term for default command
+const argv = process.argv.slice(2);
+const knownCommands = ['add', 'remove', 'list', 'help', '--help', '-h', '--version', '-v'];
+
+// If no arguments or first arg is not a known command and not a flag, route to default command
+if (argv.length === 0 || (argv.length > 0 && !knownCommands.includes(argv[0]) && !argv[0].startsWith('-'))) {
+  // Prepend 'default' command name and pass any args
+  process.argv = [process.argv[0], process.argv[1], 'default', ...argv];
+}
+
+await execute({development: useDev, dir: import.meta.url});

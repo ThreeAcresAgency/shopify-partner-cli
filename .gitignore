@@ -1,0 +1,8 @@
+node_modules/
+*.log
+.DS_Store
+.shopify-partner/
+.env
+.env.local
+*.tgz
+.oclif.manifest.json

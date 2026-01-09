@@ -1,0 +1,64 @@
+{
+  "name": "shopify-partner-cli",
+  "version": "1.0.0",
+  "description": "CLI tool to manage and access Shopify merchant stores",
+  "type": "module",
+  "bin": {
+    "shopify-partner": "./bin/run",
+    "sp": "./bin/run"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsx src/index.ts",
+    "start": "node bin/run",
+    "prepublishOnly": "npm run build",
+    "postinstall": "npm run build || true"
+  },
+  "keywords": [
+    "shopify",
+    "cli",
+    "merchant",
+    "partner"
+  ],
+  "author": "",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ThreeAcresAgency/shopify-partner-cli.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ThreeAcresAgency/shopify-partner-cli/issues"
+  },
+  "homepage": "https://github.com/ThreeAcresAgency/shopify-partner-cli#readme",
+  "dependencies": {
+    "@oclif/core": "^2.0.0",
+    "fuse.js": "^7.1.0",
+    "inquirer": "^9.3.8",
+    "inquirer-autocomplete-prompt": "^3.0.1"
+  },
+  "devDependencies": {
+    "@types/inquirer": "^9.0.9",
+    "@types/node": "^20.0.0",
+    "tsx": "^4.0.0",
+    "typescript": "^5.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "oclif": {
+    "bin": "shopify-partner",
+    "dirname": "shopify-partner-cli",
+    "commands": "./dist/commands",
+    "topicSeparator": " ",
+    "tsconfig": "tsconfig.json",
+    "plugins": []
+  },
+  "files": [
+    "bin",
+    "dist",
+    "completions",
+    "install-completion.sh",
+    "README.md",
+    "oclif.manifest.json"
+  ]
+}

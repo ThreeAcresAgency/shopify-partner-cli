@@ -1,0 +1,36 @@
+# Source files
+src/
+*.ts
+!*.d.ts
+tsconfig.json
+
+# Development files
+node_modules/
+.git/
+.gitignore
+.cursor/
+.vscode/
+.idea/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Build artifacts (will be included via files field)
+# dist/ is included in package.json files array
+
+# User data
+.shopify-partner/
+
+# Development scripts
+install-completion.sh
+completions/
+
+# Plan files
+*.plan.md
