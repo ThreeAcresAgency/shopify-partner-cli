@@ -2,6 +2,8 @@
 
 A CLI tool to help manage and access Shopify merchant stores via the Shopify CLI.
 
+Made by [Brendan Quigley](https://threeacres.ca) at [Three Acres](https://threeacres.ca)
+
 ## Installation
 
 Install directly from GitHub:
