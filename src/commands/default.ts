@@ -102,6 +102,11 @@ export default class Search extends Command {
         value: 'theme dev',
         args: ['theme', 'dev', '--store', selectedMerchant.handle],
       },
+      {
+        label: 'shopify app dev',
+        value: 'app dev',
+        args: ['app', 'dev', '--store', selectedMerchant.handle],
+      },
     ];
 
     const {selectedCommand} = await inquirer.prompt([
