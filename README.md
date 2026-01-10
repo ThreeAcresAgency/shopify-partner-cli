@@ -41,6 +41,37 @@ The command will automatically:
 - Verify the store exists
 - Detect the frontend URL (custom domain if available)
 
+### Bulk add merchants
+
+Import multiple merchants from a CSV or JSON file:
+
+```bash
+sp bulk-add merchants.csv
+sp bulk-add merchants.json
+```
+
+**CSV Format:**
+```csv
+name,handle
+Atmosphera,medikate-skincare
+Acme Store,acme-store
+Another Store,another-store
+```
+
+**JSON Format:**
+```json
+[
+  {"name": "Atmosphera", "handle": "medikate-skincare"},
+  {"name": "Acme Store", "handle": "acme-store"}
+]
+```
+
+**Options:**
+- `--skip-validation` - Skip store validation (faster, but no URL detection)
+- `--format csv|json` - Force file format (auto-detected by extension)
+
+The command will show progress and provide a summary of added, skipped (duplicates), and failed entries.
+
 ### Remove a merchant
 
 ```bash

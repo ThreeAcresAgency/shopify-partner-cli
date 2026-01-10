@@ -7,6 +7,7 @@ _sp() {
     'add:Add a new merchant to the database'
     'remove:Remove a merchant from the database'
     'list:List all merchants'
+    'bulk-add:Bulk add merchants from CSV or JSON file'
   )
   
   case $words[2] in

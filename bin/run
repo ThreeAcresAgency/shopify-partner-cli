@@ -7,7 +7,7 @@ const useDev = process.env.NODE_ENV === 'development';
 
 // Check if the first argument is a known command, if not, treat it as search term for default command
 const argv = process.argv.slice(2);
-const knownCommands = ['add', 'remove', 'list', 'help', '--help', '-h', '--version', '-v'];
+const knownCommands = ['add', 'remove', 'list', 'bulk-add', 'help', '--help', '-h', '--version', '-v'];
 
 // If no arguments or first arg is not a known command and not a flag, route to default command
 if (argv.length === 0 || (argv.length > 0 && !knownCommands.includes(argv[0]) && !argv[0].startsWith('-'))) {
