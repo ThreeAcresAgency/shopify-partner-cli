@@ -53,16 +53,16 @@ sp bulk-add merchants.json
 **CSV Format:**
 ```csv
 name,handle
-Atmosphera,medikate-skincare
 Acme Store,acme-store
 Another Store,another-store
+Example Store,example-store
 ```
 
 **JSON Format:**
 ```json
 [
-  {"name": "Atmosphera", "handle": "medikate-skincare"},
-  {"name": "Acme Store", "handle": "acme-store"}
+  {"name": "Acme Store", "handle": "acme-store"},
+  {"name": "Another Store", "handle": "another-store"}
 ]
 ```
 
