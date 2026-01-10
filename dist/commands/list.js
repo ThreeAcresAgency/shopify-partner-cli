@@ -8,11 +8,13 @@ export default class List extends Command {
             this.log('No merchants found. Add a merchant first with "sp add"');
             return;
         }
+        // Sort merchants alphabetically by name
+        const sortedMerchants = [...allMerchants].sort((a, b) => a.name.localeCompare(b.name));
         this.log('\nAvailable merchants:\n');
-        allMerchants.forEach((merchant, index) => {
+        sortedMerchants.forEach((merchant, index) => {
             this.log(`  ${index + 1}. ${merchant.name} (${merchant.handle})`);
             this.log(`     ${merchant.url}`);
-            if (index < allMerchants.length - 1) {
+            if (index < sortedMerchants.length - 1) {
                 this.log('');
             }
         });

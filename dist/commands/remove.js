@@ -13,7 +13,9 @@ export default class Remove extends Command {
     };
     async run() {
         const { args } = await this.parse(Remove);
-        const allMerchants = await readStores();
+        // Get and sort merchants alphabetically by name
+        const allMerchantsUnsorted = await readStores();
+        const allMerchants = [...allMerchantsUnsorted].sort((a, b) => a.name.localeCompare(b.name));
         if (allMerchants.length === 0) {
             this.error('No merchants found.');
         }

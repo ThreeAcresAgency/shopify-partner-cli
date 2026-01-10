@@ -17,7 +17,9 @@ export default class Search extends Command {
     async run() {
         const parsed = await this.parse(Search);
         const args = parsed.args;
-        const allMerchants = await readStores();
+        // Get and sort merchants alphabetically by name
+        const allMerchantsUnsorted = await readStores();
+        const allMerchants = [...allMerchantsUnsorted].sort((a, b) => a.name.localeCompare(b.name));
         if (allMerchants.length === 0) {
             this.error('No merchants found. Add a merchant first with "sp add"');
         }
