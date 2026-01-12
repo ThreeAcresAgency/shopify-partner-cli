@@ -101,8 +101,8 @@ sp
 This will:
 1. Show an interactive search/selection menu for merchants (with fuzzy search)
 2. Let you select a Shopify CLI command to run:
-   - `shopify pull --store <handle>`
-   - `shopify push --store <handle>`
+   - `shopify theme pull --store <handle>`
+   - `shopify theme push --store <handle>`
    - `shopify theme dev --store <handle>`
 3. Execute the selected command
 

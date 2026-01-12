@@ -88,14 +88,14 @@ export default class Search extends Command {
     // Show command selection
     const commands = [
       {
-        label: 'shopify pull --store',
-        value: 'pull',
-        args: ['pull', '--store', selectedMerchant.handle],
+        label: 'shopify theme pull --store',
+        value: 'theme pull',
+        args: ['theme', 'pull', '--store', selectedMerchant.handle],
       },
       {
-        label: 'shopify push --store',
-        value: 'push',
-        args: ['push', '--store', selectedMerchant.handle],
+        label: 'shopify theme push --store',
+        value: 'theme push',
+        args: ['theme', 'push', '--store', selectedMerchant.handle],
       },
       {
         label: 'shopify theme dev --store',
