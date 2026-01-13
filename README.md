@@ -2,8 +2,6 @@
 
 A CLI tool to help manage and access Shopify merchant stores via the Shopify CLI.
 
-Made by Brendan Quigley at [Three Acres](https://threeacres.ca)
-
 ## What is this?
 
 Shopify Partner CLI Companion (`sp`) is a command-line tool that simplifies working with multiple Shopify stores. Instead of remembering or typing store handles every time you need to run Shopify CLI commands, you can store your stores once and quickly search and select them.
@@ -143,3 +141,7 @@ After installation, you can use tab completion:
 - `sp <TAB>` - shows available commands (add, remove)
 - `sp add <TAB>` - shows command help
 - `sp remove <TAB>` - shows command help
+
+## Contributing
+
+Made by Brendan Quigley at [Three Acres](https://threeacres.ca)
