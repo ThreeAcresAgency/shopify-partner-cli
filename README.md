@@ -38,13 +38,6 @@ npm install
 npm link
 ```
 
-Or install locally in your project:
-
-```bash
-npm install https://github.com/ThreeAcresAgency/shopify-partner-cli.git
-npx sp --help
-```
-
 ## Usage
 
 ### Add a merchant
@@ -104,6 +97,19 @@ sp list
 ```
 
 Displays a numbered list of all merchants with their names, handles, and URLs.
+
+### Open stores.json in editor
+
+```bash
+sp --open
+# or
+sp -o
+```
+
+Opens the `stores.json` file in your code editor. The command will automatically detect and use:
+- Cursor (if running in Cursor or if `cursor` command is available)
+- VS Code (if running in VS Code or if `code` command is available)
+- System default editor (if no editor is detected)
 
 ### Search and execute commands
 

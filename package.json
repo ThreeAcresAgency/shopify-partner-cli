@@ -21,7 +21,7 @@
     "partner"
   ],
   "author": "Brendan Quigley <https://threeacres.ca>",
-  "license": "MIT",
+  "license": "SEE LICENSE IN LICENSE",
   "repository": {
     "type": "git",
     "url": "https://github.com/ThreeAcresAgency/shopify-partner-cli.git"
@@ -58,6 +58,7 @@
     "dist",
     "completions",
     "install-completion.sh",
+    "LICENSE",
     "README.md",
     "oclif.manifest.json"
   ]

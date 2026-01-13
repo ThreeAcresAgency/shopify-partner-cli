@@ -1,0 +1,155 @@
+{
+  "commands": {
+    "add": {
+      "aliases": [],
+      "args": {
+        "name": {
+          "description": "Merchant name",
+          "name": "name",
+          "required": true
+        },
+        "handle": {
+          "description": "Shopify store handle (e.g., \"acme-store\")",
+          "name": "handle",
+          "required": true
+        }
+      },
+      "description": "Add a new merchant to the database",
+      "flags": {},
+      "hasDynamicHelp": false,
+      "hiddenAliases": [],
+      "id": "add",
+      "pluginAlias": "shopify-partner-cli",
+      "pluginName": "shopify-partner-cli",
+      "pluginType": "core",
+      "strict": true,
+      "isESM": true,
+      "relativePath": [
+        "dist",
+        "commands",
+        "add.js"
+      ]
+    },
+    "bulk-add": {
+      "aliases": [],
+      "args": {
+        "file": {
+          "description": "Path to CSV or JSON file",
+          "name": "file",
+          "required": true
+        }
+      },
+      "description": "Bulk add merchants from a CSV or JSON file",
+      "flags": {
+        "skip-validation": {
+          "description": "Skip store validation (faster but no URL detection)",
+          "name": "skip-validation",
+          "allowNo": false,
+          "type": "boolean"
+        },
+        "format": {
+          "description": "File format (csv or json). Auto-detected if not specified",
+          "name": "format",
+          "hasDynamicHelp": false,
+          "multiple": false,
+          "options": [
+            "csv",
+            "json"
+          ],
+          "type": "option"
+        }
+      },
+      "hasDynamicHelp": false,
+      "hiddenAliases": [],
+      "id": "bulk-add",
+      "pluginAlias": "shopify-partner-cli",
+      "pluginName": "shopify-partner-cli",
+      "pluginType": "core",
+      "strict": true,
+      "isESM": true,
+      "relativePath": [
+        "dist",
+        "commands",
+        "bulk-add.js"
+      ]
+    },
+    "default": {
+      "aliases": [],
+      "args": {
+        "name": {
+          "description": "Optional search query to filter merchants",
+          "name": "name",
+          "required": false
+        }
+      },
+      "description": "Search for merchants and execute Shopify CLI commands",
+      "flags": {
+        "open": {
+          "char": "o",
+          "description": "Open stores.json in your code editor",
+          "name": "open",
+          "allowNo": false,
+          "type": "boolean"
+        }
+      },
+      "hasDynamicHelp": false,
+      "hiddenAliases": [],
+      "id": "default",
+      "pluginAlias": "shopify-partner-cli",
+      "pluginName": "shopify-partner-cli",
+      "pluginType": "core",
+      "strict": false,
+      "isESM": true,
+      "relativePath": [
+        "dist",
+        "commands",
+        "default.js"
+      ]
+    },
+    "list": {
+      "aliases": [],
+      "args": {},
+      "description": "List all merchants",
+      "flags": {},
+      "hasDynamicHelp": false,
+      "hiddenAliases": [],
+      "id": "list",
+      "pluginAlias": "shopify-partner-cli",
+      "pluginName": "shopify-partner-cli",
+      "pluginType": "core",
+      "strict": true,
+      "isESM": true,
+      "relativePath": [
+        "dist",
+        "commands",
+        "list.js"
+      ]
+    },
+    "remove": {
+      "aliases": [],
+      "args": {
+        "name": {
+          "description": "Optional merchant name or handle to remove",
+          "name": "name",
+          "required": false
+        }
+      },
+      "description": "Remove a merchant from the database",
+      "flags": {},
+      "hasDynamicHelp": false,
+      "hiddenAliases": [],
+      "id": "remove",
+      "pluginAlias": "shopify-partner-cli",
+      "pluginName": "shopify-partner-cli",
+      "pluginType": "core",
+      "strict": true,
+      "isESM": true,
+      "relativePath": [
+        "dist",
+        "commands",
+        "remove.js"
+      ]
+    }
+  },
+  "version": "1.0.0"
+}

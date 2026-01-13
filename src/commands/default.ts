@@ -1,9 +1,11 @@
-import {Command, Args} from '@oclif/core';
-import {readStores, fuzzySearchStores, type Merchant} from '../lib/store-manager.js';
+import {Command, Args, Flags} from '@oclif/core';
+import {readStores, fuzzySearchStores, getStoresPath, type Merchant} from '../lib/store-manager.js';
 import {executeShopifyCommand} from '../lib/command-executor.js';
 import inquirer from 'inquirer';
 import AutocompletePrompt from 'inquirer-autocomplete-prompt';
 import Fuse from 'fuse.js';
+import {spawn, execSync} from 'child_process';
+import {existsSync} from 'fs';
 
 inquirer.registerPrompt('autocomplete', AutocompletePrompt);
 
@@ -11,6 +13,13 @@ export default class Search extends Command {
   static description = 'Search for merchants and execute Shopify CLI commands';
 
   static strict = false;
+
+  static flags = {
+    open: Flags.boolean({
+      description: 'Open stores.json in your code editor',
+      char: 'o',
+    }),
+  };
 
   static args = {
     name: Args.string({
@@ -22,6 +31,33 @@ export default class Search extends Command {
   async run(): Promise<void> {
     const parsed = await this.parse(Search);
     const args = parsed.args as {name?: string};
+    const flags = parsed.flags as {open?: boolean};
+
+    // Handle --open flag
+    if (flags.open) {
+      const storesPath = getStoresPath();
+
+      if (!existsSync(storesPath)) {
+        this.log('No stores.json file found. Add a merchant first with "sp add"');
+        return;
+      }
+
+      const editor = this.detectEditor();
+
+      if (editor) {
+        this.log(`Opening ${storesPath} in ${editor}...`);
+        try {
+          this.openInEditor(editor, storesPath);
+        } catch (error) {
+          this.log(`Failed to open in ${editor}, using system default...`);
+          this.openInSystemDefault(storesPath);
+        }
+      } else {
+        this.log(`Opening ${storesPath}...`);
+        this.openInSystemDefault(storesPath);
+      }
+      return;
+    }
 
     // Get and sort merchants alphabetically by name
     const allMerchantsUnsorted = await readStores();
@@ -135,5 +171,107 @@ export default class Search extends Command {
     if (exitCode !== 0) {
       this.exit(exitCode);
     }
+  }
+
+  private detectEditor(): string | null {
+    // Check if cursor command exists in PATH (prioritize Cursor)
+    try {
+      execSync('which cursor', {stdio: 'ignore'});
+      return 'cursor';
+    } catch {
+      // cursor not found
+    }
+
+    // Check if code command exists in PATH
+    try {
+      execSync('which code', {stdio: 'ignore'});
+      return 'code';
+    } catch {
+      // code not found
+    }
+
+    // Check for Cursor via environment variables (fallback)
+    if (
+      process.env.CURSOR_INJECTION ||
+      process.env.CURSOR_PID ||
+      process.env.CURSOR ||
+      process.env.TERM_PROGRAM === 'cursor'
+    ) {
+      // Try to find cursor in common locations
+      const cursorPaths = [
+        '/Applications/Cursor.app/Contents/Resources/app/bin/cursor',
+        '/usr/local/bin/cursor',
+      ];
+      for (const path of cursorPaths) {
+        if (existsSync(path)) {
+          return path;
+        }
+      }
+    }
+
+    // Check for VS Code via environment variables (fallback)
+    if (
+      process.env.VSCODE_INJECTION ||
+      process.env.VSCODE_PID ||
+      process.env.VSCODE ||
+      process.env.TERM_PROGRAM === 'vscode'
+    ) {
+      // Try to find code in common locations
+      const codePaths = [
+        '/Applications/Visual Studio Code.app/Contents/Resources/app/bin/code',
+        '/usr/local/bin/code',
+      ];
+      for (const path of codePaths) {
+        if (existsSync(path)) {
+          return path;
+        }
+      }
+    }
+
+    return null;
+  }
+
+  private openInEditor(editor: string, filePath: string): void {
+    try {
+      const editorProcess = spawn(editor, [filePath], {
+        stdio: 'ignore',
+        detached: true,
+      });
+
+      editorProcess.on('error', (error) => {
+        // Silently fall back to system default
+        this.openInSystemDefault(filePath);
+      });
+
+      editorProcess.unref();
+    } catch (error) {
+      // Fall back to system default if spawn fails
+      this.openInSystemDefault(filePath);
+    }
+  }
+
+  private openInSystemDefault(filePath: string): void {
+    const platform = process.platform;
+    let command: string;
+    let args: string[];
+
+    if (platform === 'darwin') {
+      command = 'open';
+      args = [filePath];
+    } else if (platform === 'win32') {
+      command = 'cmd';
+      args = ['/c', 'start', '', filePath];
+    } else {
+      // Linux
+      command = 'xdg-open';
+      args = [filePath];
+    }
+
+    const openProcess = spawn(command, args, {
+      stdio: 'ignore',
+      detached: true,
+    });
+
+    openProcess.unref();
   }
 }
