@@ -20,12 +20,6 @@ This removes the symlink and uninstalls the package.
 npm uninstall -g shopify-partner-cli
 ```
 
-## If installed via Homebrew
-
-```bash
-brew uninstall shopify-partner-cli
-```
-
 ## Verify uninstallation
 
 ```bash
