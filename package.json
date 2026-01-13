@@ -1,6 +1,6 @@
 {
   "name": "shopify-partner-cli",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "CLI tool to manage and access Shopify merchant stores",
   "type": "module",
   "bin": {
