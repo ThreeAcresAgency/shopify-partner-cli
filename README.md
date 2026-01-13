@@ -23,19 +23,41 @@ This tool solves these problems by:
 
 ## Installation
 
-Install directly from GitHub:
+### Install from npm (Recommended)
+
+```bash
+npm install -g shopify-partner-cli
+```
+
+After installation, verify it works:
+
+```bash
+sp --help
+```
+
+### Install from GitHub
 
 ```bash
 npm install -g https://github.com/ThreeAcresAgency/shopify-partner-cli.git
 ```
 
-Or clone and install for development:
+### Development Installation
+
+Clone and install for development:
 
 ```bash
 git clone https://github.com/ThreeAcresAgency/shopify-partner-cli.git
 cd shopify-partner-cli
 npm install
 npm link
+```
+
+## Uninstallation
+
+To uninstall:
+
+```bash
+npm uninstall -g shopify-partner-cli
 ```
 
 ## Usage

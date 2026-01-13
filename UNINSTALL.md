@@ -1,5 +1,11 @@
 # Uninstalling Shopify Partner CLI
 
+## If installed via npm (from npm registry)
+
+```bash
+npm uninstall -g shopify-partner-cli
+```
+
 ## If installed via npm link (development)
 
 ```bash
@@ -8,13 +14,13 @@ npm unlink -g shopify-partner-cli
 
 This removes the symlink and uninstalls the package.
 
-## If installed via npm install -g
+## If installed from GitHub
 
 ```bash
 npm uninstall -g shopify-partner-cli
 ```
 
-## If installed via Homebrew (future)
+## If installed via Homebrew
 
 ```bash
 brew uninstall shopify-partner-cli
@@ -33,6 +39,11 @@ sp --help
 ## Reinstall for testing
 
 After uninstalling, you can test the installation process:
+
+### From npm (recommended):
+```bash
+npm install -g shopify-partner-cli
+```
 
 ### From GitHub:
 ```bash
