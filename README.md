@@ -2,7 +2,26 @@
 
 A CLI tool to help manage and access Shopify merchant stores via the Shopify CLI.
 
-Made by [Brendan Quigley](https://threeacres.ca) at [Three Acres](https://threeacres.ca)
+Made by Brendan Quigley at [Three Acres](https://threeacres.ca)
+
+## What is this?
+
+Shopify Partner CLI Companion (`sp`) is a command-line tool that simplifies working with multiple Shopify stores. Instead of remembering or typing store handles every time you need to run Shopify CLI commands, you can store your stores once and quickly search and select them.
+
+## What problem does it solve?
+
+When working as a Shopify Partner with multiple client stores, you frequently need to run commands like `shopify theme dev --store <handle>` or `shopify theme pull --store <handle>`. This becomes tedious when:
+
+- You have many stores to manage
+- Store handles are hard to remember (e.g., `acme-store-2024`, `acme-store-v2`)
+- **Store handles change** - Sometimes merchants change their store handle, making it difficult to track which handle corresponds to which store
+- You need to quickly switch between stores during development
+
+This tool solves these problems by:
+- Storing store information (name and handle) in a centralized location
+- Providing fuzzy search to quickly find stores by name
+- Automatically using the correct handle when executing Shopify CLI commands
+- Displaying the selected handle so you can verify you're working with the right store
 
 ## Installation
 
@@ -100,11 +119,12 @@ sp
 
 This will:
 1. Show an interactive search/selection menu for merchants (with fuzzy search)
-2. Let you select a Shopify CLI command to run:
+2. Display the selected store handle
+3. Let you select a Shopify CLI command to run:
+   - `shopify theme dev --store <handle>`
    - `shopify theme pull --store <handle>`
    - `shopify theme push --store <handle>`
-   - `shopify theme dev --store <handle>`
-3. Execute the selected command
+4. Execute the selected command
 
 ## Data Storage
 

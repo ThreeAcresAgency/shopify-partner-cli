@@ -68,8 +68,15 @@ export default class Search extends Command {
             this.error('Merchant selection failed');
         }
         selectedMerchant = found;
+        // Show the selected handle
+        this.log(`\nSelected store: ${selectedMerchant.handle}\n`);
         // Show command selection
         const commands = [
+            {
+                label: 'shopify theme dev --store',
+                value: 'theme dev',
+                args: ['theme', 'dev', '--store', selectedMerchant.handle],
+            },
             {
                 label: 'shopify theme pull --store',
                 value: 'theme pull',
@@ -79,11 +86,6 @@ export default class Search extends Command {
                 label: 'shopify theme push --store',
                 value: 'theme push',
                 args: ['theme', 'push', '--store', selectedMerchant.handle],
-            },
-            {
-                label: 'shopify theme dev --store',
-                value: 'theme dev',
-                args: ['theme', 'dev', '--store', selectedMerchant.handle],
             },
         ];
         const { selectedCommand } = await inquirer.prompt([
