@@ -149,6 +149,7 @@ This will:
 3. Let you select a Shopify CLI command to run:
    - `shopify theme dev --store <handle>`
    - `shopify theme pull --store <handle>`
+   - `shopify theme pull --only="**/*.json" --store <handle>`
    - `shopify theme push --store <handle>`
 4. Execute the selected command
 
