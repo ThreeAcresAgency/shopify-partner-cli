@@ -116,6 +116,11 @@ export default class Search extends Command {
                 args: ['theme', 'pull', '--store', selectedMerchant.handle],
             },
             {
+                label: 'shopify theme pull --only="**/*.json" --store',
+                value: 'theme pull json',
+                args: ['theme', 'pull', '--only', '**/*.json', '--store', selectedMerchant.handle],
+            },
+            {
                 label: 'shopify theme push --store',
                 value: 'theme push',
                 args: ['theme', 'push', '--store', selectedMerchant.handle],
@@ -138,12 +143,17 @@ export default class Search extends Command {
         if (!commandToRun) {
             this.error('Command selection failed');
         }
+        // Build full command string for history (e.g., "shopify theme dev --store acme-store")
+        const commandString = `shopify ${commandToRun.args.join(' ')}`;
         // Execute the command
-        this.log(`Executing: shopify ${commandToRun.args.join(' ')}`);
-        const exitCode = await executeShopifyCommand('', commandToRun.args);
+        this.log(`Executing: ${commandString}`);
+        const exitCode = await executeShopifyCommand('', commandToRun.args, selectedMerchant.handle, commandString);
         if (exitCode !== 0) {
             this.exit(exitCode);
         }
+        // After successful execution, show how to set SHOPIFY_SHOP for subsequent commands
+        this.log(`\nTo use this store for subsequent shopify commands without --store flag, run:`);
+        this.log(`  export SHOPIFY_SHOP="${selectedMerchant.handle}"`);
     }
     detectEditor() {
         // Check if cursor command exists in PATH (prioritize Cursor)
